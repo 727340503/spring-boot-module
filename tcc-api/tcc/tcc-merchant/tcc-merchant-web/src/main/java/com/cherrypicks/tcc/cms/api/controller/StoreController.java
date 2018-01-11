@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cherrypicks.tcc.cms.api.annotation.IPPermissionAuth;
-import com.cherrypicks.tcc.cms.api.annotation.MerchantPermissionAuth;
+import com.cherrypicks.tcc.cms.api.annotation.PrivateRequestVerifyAnno;
+import com.cherrypicks.tcc.cms.api.annotation.UserMerchanVerifyAnno;
 import com.cherrypicks.tcc.cms.api.http.util.SystemRoleRequestUtil;
 import com.cherrypicks.tcc.cms.api.http.util.SystemUserMerchantMapRequestUtil;
 import com.cherrypicks.tcc.cms.api.util.AssertUtil;
@@ -62,7 +62,7 @@ public class StoreController extends BaseController<Store>{
 		return super.doFetch(startRow, maxRows, sortField, sortType, criteriaMap);
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value="/getStoreDetail",method=RequestMethod.POST)
 	public ResultVO getStoreDetail(final Long userId,final Long storeId,final String lang){
 		
@@ -75,7 +75,7 @@ public class StoreController extends BaseController<Store>{
 		return result;
 	}
 
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value="/createStore",method=RequestMethod.POST)
 	public SuccessVO addStore(final Long userId,final String externalStoreId,final Long merchantId,final Long merchantAreaId,final String phone,final Integer status,
 						final String lat, final String lng, final String langData, final String lang){
@@ -102,7 +102,7 @@ public class StoreController extends BaseController<Store>{
 		return new SuccessVO();
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/getStoreById",method=RequestMethod.POST)
 	public ResultVO getStoreById(final Long storeId) {
 		

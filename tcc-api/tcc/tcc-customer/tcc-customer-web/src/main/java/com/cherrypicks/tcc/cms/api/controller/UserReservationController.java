@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cherrypicks.tcc.cms.api.annotation.IPPermissionAuth;
+import com.cherrypicks.tcc.cms.api.annotation.PrivateRequestVerifyAnno;
 import com.cherrypicks.tcc.cms.api.http.util.SystemRoleRequestUtil;
 import com.cherrypicks.tcc.cms.api.http.util.SystemUserMerchantMapRequestUtil;
 import com.cherrypicks.tcc.cms.api.util.AssertUtil;
@@ -96,7 +96,7 @@ public class UserReservationController extends BaseController<UserReservation>{
 		return new SuccessVO();
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/getUserReservationPushNotif",method=RequestMethod.POST)
 	public ResultVO getUserReservationPushNotif(final Long userReservationId) {
 		
@@ -107,7 +107,7 @@ public class UserReservationController extends BaseController<UserReservation>{
 		return result;
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/exportUserReservationReport",method=RequestMethod.POST)
 	public ResultVO exportUserReservationReport(final Long merchantId, final Long campaignId, final String reservationStartTime, final String reservationEndTime, 
 			final String pickupStartTime, final String pickupEndTime, final Integer status) {
@@ -117,7 +117,7 @@ public class UserReservationController extends BaseController<UserReservation>{
 		return result;
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/getCampaignReservationCount",method=RequestMethod.POST)
 	public ResultVO getCampaignReservationCount(final Long campaignId) {
 		
@@ -126,7 +126,7 @@ public class UserReservationController extends BaseController<UserReservation>{
 		return result;
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/getViewUserReservationReportData",method=RequestMethod.POST)
 	public ResultVO getViewUserReservationReportData(final Long merchantId, final Long campaignId,final String reservationStartTime,final String reservationEndTime, final String pickupStartTime, 
 			final String pickupEndTime, final Integer status, final String sortField,final String sortType,final Integer startRow,final Integer maxRows) {

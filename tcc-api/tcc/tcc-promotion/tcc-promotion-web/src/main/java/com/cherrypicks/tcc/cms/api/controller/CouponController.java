@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cherrypicks.tcc.cms.api.annotation.IPPermissionAuth;
-import com.cherrypicks.tcc.cms.api.annotation.MerchantPermissionAuth;
+import com.cherrypicks.tcc.cms.api.annotation.PrivateRequestVerifyAnno;
+import com.cherrypicks.tcc.cms.api.annotation.UserMerchanVerifyAnno;
 import com.cherrypicks.tcc.cms.api.http.util.SystemRoleRequestUtil;
 import com.cherrypicks.tcc.cms.api.http.util.SystemUserMerchantMapRequestUtil;
 import com.cherrypicks.tcc.cms.api.util.AssertUtil;
@@ -75,7 +75,7 @@ public class CouponController extends BaseController<Coupon>{
 		return result;
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value="/getHomePageCouponList",method=RequestMethod.POST)
 	public ResultVO getHomePageCouponList(final Long userId,final Long merchantId,final Integer status, final String lang){
 		
@@ -233,7 +233,7 @@ public class CouponController extends BaseController<Coupon>{
 		return new SuccessVO();
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/getCouponById",method=RequestMethod.POST)
 	public ResultVO deleteCopon(final Long couponId){
 		

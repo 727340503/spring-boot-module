@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cherrypicks.tcc.cms.api.annotation.IPPermissionAuth;
+import com.cherrypicks.tcc.cms.api.annotation.PrivateRequestVerifyAnno;
 import com.cherrypicks.tcc.cms.api.http.util.AuthorizeRequestUtil;
 import com.cherrypicks.tcc.cms.api.util.AssertUtil;
 import com.cherrypicks.tcc.cms.api.vo.ResultVO;
@@ -106,7 +106,7 @@ public class UserStampHistoryController extends BaseController<UserStampHistory>
 		return new SuccessVO();
 	}
 
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value = "/private/exportUserStampHistoryReport", method = RequestMethod.POST)
 	public ResultVO viewTransferStampsReport(final Long merchantId, final Long campaignId, final String startTime, final String endTime, 
 			final String userStampHistoryTypes) throws Exception {
@@ -122,7 +122,7 @@ public class UserStampHistoryController extends BaseController<UserStampHistory>
 		return result;
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value = "/private/getStampHistoryCountByType", method = RequestMethod.POST)
 	public ResultVO getStampHistryCountByTypes(final Long campaignId, final String types) throws Exception {
 
@@ -133,7 +133,7 @@ public class UserStampHistoryController extends BaseController<UserStampHistory>
 		return result;
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value = "/private/viewUserStampHistoryReport", method = RequestMethod.POST)
 	public ResultVO getStampHistryCountByTypes(final Long userId, final Long merchantId,final Long campaignId,final String startTime,final String endTime,final String sortField,final String sortType,
 			final Integer startRow,final Integer maxRows, final Boolean isTransfer, final String types,final Integer type) throws Exception {

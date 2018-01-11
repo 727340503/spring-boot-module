@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cherrypicks.tcc.cms.api.annotation.IPPermissionAuth;
+import com.cherrypicks.tcc.cms.api.annotation.PrivateRequestVerifyAnno;
 import com.cherrypicks.tcc.cms.api.http.util.AuthorizeRequestUtil;
 import com.cherrypicks.tcc.cms.api.util.AssertUtil;
 import com.cherrypicks.tcc.cms.api.vo.ResultVO;
@@ -85,7 +85,7 @@ public class UserCouponController extends BaseController<UserCoupon>{
 		return new SuccessVO();
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/exportUserCouponReport",method=RequestMethod.POST)
 	public ResultVO exportUserCouponReport(final Long merchantId, final Long campaignId, final String startTime,
 											final String endTime, final Integer status, final Boolean isRedeemCouponReport) {
@@ -95,7 +95,7 @@ public class UserCouponController extends BaseController<UserCoupon>{
 		return result;
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/getUserCouponCountByCampaignId",method=RequestMethod.POST)
 	public ResultVO getUserCouponCountByCampaignId(final Long campaignId, final Integer status) {
 		
@@ -104,7 +104,7 @@ public class UserCouponController extends BaseController<UserCoupon>{
 		return result;
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/viewUserCouponReport",method=RequestMethod.POST)
 	public ResultVO viewUserCouponReport(final Long merchantId,final Long campaignId,final String startTime,final String endTime,
 			final Integer status, final String sortField,final String sortType,final Integer startRow,final Integer maxRows, final Boolean isRedeemCouponReport) {

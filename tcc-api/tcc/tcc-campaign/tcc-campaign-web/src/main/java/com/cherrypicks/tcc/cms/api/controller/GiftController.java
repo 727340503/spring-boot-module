@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cherrypicks.tcc.cms.api.annotation.MerchantPermissionAuth;
+import com.cherrypicks.tcc.cms.api.annotation.UserMerchanVerifyAnno;
 import com.cherrypicks.tcc.cms.api.http.util.SystemRoleRequestUtil;
 import com.cherrypicks.tcc.cms.api.http.util.SystemUserMerchantMapRequestUtil;
 import com.cherrypicks.tcc.cms.api.util.AssertUtil;
@@ -72,7 +72,7 @@ public class GiftController extends BaseController<Gift>{
 		return result;
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value="/createGift",method=RequestMethod.POST)
 	public ResultVO createGift(final Long userId,final Long merchantId,final String langData,final String lang){
 		

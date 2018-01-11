@@ -12,12 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.cherrypicks.tcc.cms.api.annotation.MerchantPermissionAuth;
+import com.cherrypicks.tcc.cms.api.annotation.UserMerchanVerifyAnno;
 import com.cherrypicks.tcc.cms.exception.ForbiddenException;
 import com.cherrypicks.tcc.cms.system.service.IAuthorizeService;
 import com.cherrypicks.tcc.util.Constants;
 
-public class MerchantPermissionCheckInterceptor extends HandlerInterceptorAdapter {
+public class UserMerchantVerifyInterceptor extends HandlerInterceptorAdapter {
 
     private final Log logger = LogFactory.getLog(this.getClass());
     
@@ -37,7 +37,7 @@ public class MerchantPermissionCheckInterceptor extends HandlerInterceptorAdapte
         final Method method = handlerMethod.getMethod();
 
         // 判断接口是否需要校验
-        final MerchantPermissionAuth methodAnnotation = method.getAnnotation(MerchantPermissionAuth.class);
+        final UserMerchanVerifyAnno methodAnnotation = method.getAnnotation(UserMerchanVerifyAnno.class);
 
         if(methodAnnotation != null) {
         	final Long userId = Long.parseLong(request.getParameter(Constants.USERID));	

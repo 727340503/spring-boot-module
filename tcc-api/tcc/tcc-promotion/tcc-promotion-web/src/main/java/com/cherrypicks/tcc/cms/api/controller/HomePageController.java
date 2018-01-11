@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cherrypicks.tcc.cms.api.annotation.MerchantPermissionAuth;
+import com.cherrypicks.tcc.cms.api.annotation.UserMerchanVerifyAnno;
 import com.cherrypicks.tcc.cms.api.http.util.MerchantRequestUtil;
 import com.cherrypicks.tcc.cms.api.util.AssertUtil;
 import com.cherrypicks.tcc.cms.api.vo.ResultVO;
@@ -36,7 +36,7 @@ public class HomePageController extends BaseController<HomePage>{
 		super.setBaseService(homePageService);
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value="/createchantHomePage",method=RequestMethod.POST)
 	public ResultVO createchantHomePage(final Long userId,final Long merchantId,final String homePageFrame,final String homePageData,final String lang){
 		
@@ -50,7 +50,7 @@ public class HomePageController extends BaseController<HomePage>{
 		return result;
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value="/getMerchantHomePage",method=RequestMethod.POST)
 	public ResultVO getMerchantHomePage(final Long userId,final Long merchantId,final Integer status, final String langCode,final String lang){
 		
@@ -84,7 +84,7 @@ public class HomePageController extends BaseController<HomePage>{
 		return result;
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value="/publishMerchantHomePage",method=RequestMethod.POST)
 	public SuccessVO publishMerchantHomePage(final Long userId,final Long merchantId,final String lang){
 		AssertUtil.notNull(merchantId, "Merchant id "+I18nUtil.getMessage(CmsCodeStatus.ILLEGAL_ARGUMENT, null, lang));

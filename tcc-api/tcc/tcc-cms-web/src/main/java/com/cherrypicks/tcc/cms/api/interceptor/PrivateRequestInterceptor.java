@@ -10,10 +10,10 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.cherrypicks.tcc.cms.api.annotation.IPPermissionAuth;
+import com.cherrypicks.tcc.cms.api.annotation.PrivateRequestVerifyAnno;
 import com.cherrypicks.tcc.cms.exception.ForbiddenException;
 
-public class IPPermissionInterceptor extends HandlerInterceptorAdapter {
+public class PrivateRequestInterceptor extends HandlerInterceptorAdapter {
 
     private final Log logger = LogFactory.getLog(this.getClass());
     
@@ -30,7 +30,7 @@ public class IPPermissionInterceptor extends HandlerInterceptorAdapter {
         final Method method = handlerMethod.getMethod();
 
         // 判断接口是否需要校验
-        final IPPermissionAuth methodAnnotation = method.getAnnotation(IPPermissionAuth.class);
+        final PrivateRequestVerifyAnno methodAnnotation = method.getAnnotation(PrivateRequestVerifyAnno.class);
 
         if(methodAnnotation != null) {
         	

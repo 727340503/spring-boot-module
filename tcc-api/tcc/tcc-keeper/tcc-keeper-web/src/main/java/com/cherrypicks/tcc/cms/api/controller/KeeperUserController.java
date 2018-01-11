@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cherrypicks.tcc.cms.api.annotation.MerchantPermissionAuth;
+import com.cherrypicks.tcc.cms.api.annotation.UserMerchanVerifyAnno;
 import com.cherrypicks.tcc.cms.api.util.AssertUtil;
 import com.cherrypicks.tcc.cms.api.vo.ResultVO;
 import com.cherrypicks.tcc.cms.api.vo.SuccessVO;
@@ -32,7 +32,7 @@ public class KeeperUserController extends BaseController<KeeperUser>{
 		super.setBaseService(keeperUserService);
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value="/getKeeperUserList",method=RequestMethod.POST)
 	public PagingResultVo getKeeperUserList(final Long userId, final String userName, final Long merchantId, final Long storeId, final String sortField,final String sortType,final Integer startRow,final Integer maxRows, final String langCode,final String lang){
 		

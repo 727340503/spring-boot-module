@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cherrypicks.tcc.cms.api.annotation.MerchantPermissionAuth;
+import com.cherrypicks.tcc.cms.api.annotation.UserMerchanVerifyAnno;
 import com.cherrypicks.tcc.cms.api.util.AssertUtil;
 import com.cherrypicks.tcc.cms.api.vo.ResultVO;
 import com.cherrypicks.tcc.cms.api.vo.SuccessVO;
@@ -31,7 +31,7 @@ public class MerchantAreaController extends BaseController<MerchantArea>{
 		super.setBaseService(merchantAreaService);
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value="/getmerchantAreaList",method=RequestMethod.POST)
 	public ResultVO getMerchantAreaList(Long userId, Long merchantId, String lang){
 		
@@ -44,7 +44,7 @@ public class MerchantAreaController extends BaseController<MerchantArea>{
 		return result;
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value="/createMerchantArea",method=RequestMethod.POST)
 	public ResultVO addMerchantArea(Long userId,Long merchantId,String langData,String lang){
 		

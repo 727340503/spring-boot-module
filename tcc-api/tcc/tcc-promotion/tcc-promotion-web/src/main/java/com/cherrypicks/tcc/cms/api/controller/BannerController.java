@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cherrypicks.tcc.cms.api.annotation.MerchantPermissionAuth;
+import com.cherrypicks.tcc.cms.api.annotation.UserMerchanVerifyAnno;
 import com.cherrypicks.tcc.cms.api.http.util.SystemRoleRequestUtil;
 import com.cherrypicks.tcc.cms.api.http.util.SystemUserMerchantMapRequestUtil;
 import com.cherrypicks.tcc.cms.api.util.AssertUtil;
@@ -61,7 +61,7 @@ public class BannerController extends BaseController<Banner>{
 		return super.doFetch(startRow, maxRows, sortField, sortType, criteriaMap);
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value="/getHomePageBanerList",method=RequestMethod.POST)
 	public ResultVO getHomePageBannerList(final Long userId,Long merchantId,final Integer status,final String lang){
 		

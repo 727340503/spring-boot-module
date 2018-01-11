@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cherrypicks.tcc.cms.api.annotation.IPPermissionAuth;
+import com.cherrypicks.tcc.cms.api.annotation.PrivateRequestVerifyAnno;
 import com.cherrypicks.tcc.cms.api.util.AssertUtil;
 import com.cherrypicks.tcc.cms.api.vo.ResultVO;
 import com.cherrypicks.tcc.cms.api.vo.SuccessVO;
@@ -63,7 +63,7 @@ public class StampController extends BaseController<Stamp>{
 		return new SuccessVO();
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/getStampListByStampCardId",method=RequestMethod.POST)
 	public ResultVO getStampListByStampCardId(final Long stampCardId){
 		

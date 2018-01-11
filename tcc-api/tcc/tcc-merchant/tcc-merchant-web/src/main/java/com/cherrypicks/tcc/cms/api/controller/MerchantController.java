@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cherrypicks.tcc.cms.api.annotation.IPPermissionAuth;
-import com.cherrypicks.tcc.cms.api.annotation.MerchantPermissionAuth;
+import com.cherrypicks.tcc.cms.api.annotation.PrivateRequestVerifyAnno;
+import com.cherrypicks.tcc.cms.api.annotation.UserMerchanVerifyAnno;
 import com.cherrypicks.tcc.cms.api.http.util.SystemRoleRequestUtil;
 import com.cherrypicks.tcc.cms.api.http.util.SystemUserMerchantMapRequestUtil;
 import com.cherrypicks.tcc.cms.api.util.AssertUtil;
@@ -40,7 +40,7 @@ public class MerchantController extends BaseController<Merchant>{
 		super.setBaseService(merchantService);
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value="/createMerchant",method=RequestMethod.POST)
 	public SuccessVO addMerchant(final Long userId, final String securityKey,final String timeZone,final String loginMethod,final Integer issueStampMethod,
 								final Integer status,final Boolean isCouponManagement,final Long currencyUnitId,final String dateFormat,final String hoursFormat,
@@ -68,7 +68,7 @@ public class MerchantController extends BaseController<Merchant>{
 		return new SuccessVO();
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value="/updateMerchant",method=RequestMethod.POST)
 	public ResultVO updateMerchant(final Long userId,final Long merchantId,final String securityKey,final String loginMethod,final Integer issueStampMethod,
 				final Integer status,final Boolean isCouponManagement,final String defaultLangCode,final String phoneDistrictCode,final String dateFormat,final String hoursFormat,
@@ -107,7 +107,7 @@ public class MerchantController extends BaseController<Merchant>{
 		return super.doFetch(startRow, maxRows, sortField, sortType, criteriaMap);
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value="/getMerchantDetail",method=RequestMethod.POST)
 	public ResultVO getMerchantDetail(final Long userId,final Long merchantId,final String lang){
 		
@@ -143,7 +143,7 @@ public class MerchantController extends BaseController<Merchant>{
 		return result;
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value="/updateMerchantSecurityKey",method=RequestMethod.POST)
 	public SuccessVO updateMerchantSecurityKey(final Long userId,final String securityKey,final Long merchantId,final String lang){
 		
@@ -155,7 +155,7 @@ public class MerchantController extends BaseController<Merchant>{
 		return new SuccessVO();
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/getMerchantLangCodes",method=RequestMethod.POST)
 	public ResultVO getMerchantLangCodes(final Long merchantId) {
 		
@@ -166,7 +166,7 @@ public class MerchantController extends BaseController<Merchant>{
 		return result;
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/getMerchantById",method=RequestMethod.POST)
 	public ResultVO getMerchantById(final Long merchantId) {
 		
@@ -177,7 +177,7 @@ public class MerchantController extends BaseController<Merchant>{
 		return result;
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/getMerchantDefaultLangCode",method=RequestMethod.POST)
 	public ResultVO getMerchantDefaultLangCode(final Long merchantId) {
 		
@@ -188,7 +188,7 @@ public class MerchantController extends BaseController<Merchant>{
 		return result;
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/updateMerchantForVersion",method=RequestMethod.POST)
 	public ResultVO updateMerchantForVersion(final Merchant merchant) {
 		
@@ -200,7 +200,7 @@ public class MerchantController extends BaseController<Merchant>{
 		return result;
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/getMerchantDefaultName",method=RequestMethod.POST)
 	public ResultVO getMerchantDefaultName(final Long merchantId) {
 		

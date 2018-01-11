@@ -23,8 +23,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import com.cherrypicks.tcc.cms.api.filter.CorsFilter;
 import com.cherrypicks.tcc.cms.api.filter.RestfulFilter;
-import com.cherrypicks.tcc.cms.api.interceptor.IPPermissionInterceptor;
-import com.cherrypicks.tcc.cms.api.interceptor.MerchantPermissionCheckInterceptor;
+import com.cherrypicks.tcc.cms.api.interceptor.PrivateRequestInterceptor;
+import com.cherrypicks.tcc.cms.api.interceptor.UserMerchantVerifyInterceptor;
 import com.cherrypicks.tcc.cms.api.interceptor.PermissionCheckInterceptor;
 import com.cherrypicks.tcc.cms.api.interceptor.SessionInterceptor;
 import com.cherrypicks.tcc.util.DateUtil;
@@ -116,12 +116,12 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
     
     @Bean
-    public MerchantPermissionCheckInterceptor merchantPermissionCheckInterceprot() {
-    	return new MerchantPermissionCheckInterceptor();
+    public UserMerchantVerifyInterceptor merchantPermissionCheckInterceprot() {
+    	return new UserMerchantVerifyInterceptor();
     }
 
-    public IPPermissionInterceptor ipPermissionInterceptor(){
-    	return new IPPermissionInterceptor();
+    public PrivateRequestInterceptor ipPermissionInterceptor(){
+    	return new PrivateRequestInterceptor();
     }
     
     @Override

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.cherrypicks.tcc.cms.api.annotation.MerchantPermissionAuth;
+import com.cherrypicks.tcc.cms.api.annotation.UserMerchanVerifyAnno;
 import com.cherrypicks.tcc.cms.api.http.util.AuthorizeRequestUtil;
 import com.cherrypicks.tcc.cms.api.http.util.CampaignRequestUtil;
 import com.cherrypicks.tcc.cms.api.http.util.MerchantRequestUtil;
@@ -32,7 +32,7 @@ public class ReportController{
 	@Autowired
 	private ReportService reportService;
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value = "/exportCollectStampsReport", method = RequestMethod.GET)
 	public void exportCollectStampsReport(final HttpServletRequest request, final HttpServletResponse response,final Long userId, final Long merchantId,final Long campaignId,final String startTime,final String endTime,final String lang) throws Exception {
 
@@ -53,7 +53,7 @@ public class ReportController{
 		excel.buildExcelDocument(obj, workbook, request, response);
 	}
 
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value = "/exportRedemptionReport", method = RequestMethod.GET)
 	public void exportRedemptionReport(final HttpServletRequest request, final HttpServletResponse response,final Long userId, final Long merchantId, final Long campaignId, final String startTime,final String endTime,final String lang) throws Exception {
 
@@ -74,7 +74,7 @@ public class ReportController{
 		excel.buildExcelDocument(obj, workbook, request, response);
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value = "/exportReservationReport", method = RequestMethod.GET)
 	public void exportReservationReport(final HttpServletRequest request, final HttpServletResponse response, final Long userId, final Long merchantId, final Long campaignId,
 								final String reservationStartTime,final String reservationEndTime, final String pickupStartTime, final String pickupEndTime, final Integer status, final String lang) throws Exception {
@@ -104,7 +104,7 @@ public class ReportController{
 		excel.buildExcelDocument(obj, workbook, request, response);
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value = "/exportTransferStampsReport", method = RequestMethod.GET)
 	public void exportTransferStampsReport(final HttpServletRequest request, final HttpServletResponse response,final Long userId, final Long merchantId, final Long campaignId,final String startTime,final String endTime,final String lang) throws Exception {
 
@@ -125,7 +125,7 @@ public class ReportController{
 		excel.buildExcelDocument(obj, workbook, request, response);
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value = "/exportCollectCouponReport", method = RequestMethod.GET)
 	public void exportCollectCouponReport(final HttpServletRequest request, final HttpServletResponse response,final Long userId, final Long merchantId, final Long campaignId,final Integer status, final String startTime,final String endTime,final String lang) throws Exception {
 
@@ -145,7 +145,7 @@ public class ReportController{
 		excel.buildExcelDocument(obj, workbook, request, response);
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value = "/exportRedeemCouponReport", method = RequestMethod.GET)
 	public void exportRedeemCouponReport(final HttpServletRequest request, final HttpServletResponse response,final Long userId, final Long merchantId, final Long campaignId,final String startTime,final String endTime,final String lang) throws Exception {
 
@@ -165,7 +165,7 @@ public class ReportController{
 		excel.buildExcelDocument(obj, workbook, request, response);
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value = "/exportUserReport", method = RequestMethod.GET)
 	public void exportUserReport(final HttpServletRequest request, final HttpServletResponse response,final Long userId,final Long merchantId,final String startTime,final String endTime,final String lang) throws Exception {
 		

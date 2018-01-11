@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cherrypicks.tcc.cms.api.annotation.IPPermissionAuth;
-import com.cherrypicks.tcc.cms.api.annotation.MerchantPermissionAuth;
+import com.cherrypicks.tcc.cms.api.annotation.PrivateRequestVerifyAnno;
+import com.cherrypicks.tcc.cms.api.annotation.UserMerchanVerifyAnno;
 import com.cherrypicks.tcc.cms.api.http.util.SystemRoleRequestUtil;
 import com.cherrypicks.tcc.cms.api.http.util.SystemUserMerchantMapRequestUtil;
 import com.cherrypicks.tcc.cms.api.util.AssertUtil;
@@ -67,7 +67,7 @@ public class CampaignController extends BaseController<Campaign>{
 		return super.doFetch(startRow, maxRows, sortField, sortType, criteriaMap);
 	}
 
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value="/getHomePageCampaignList",method=RequestMethod.POST)
 	public ResultVO getHomePageCampaignList(final Long userId, final Long merchantId,final Integer status, final String lang){
 
@@ -80,7 +80,7 @@ public class CampaignController extends BaseController<Campaign>{
 		return result;
 	}
 
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value="/createCampaign",method=RequestMethod.POST)
 	public ResultVO addCampaign(final Long userId,final Long merchantId,final Integer stampRatio,final String prmBannerUrl,
 			final Date startTime,final Date endTime,final Date collStartTime, final Date collEndTime,final Date redeemStartTime,final Date redeemEndTime,
@@ -175,7 +175,7 @@ public class CampaignController extends BaseController<Campaign>{
 		return result;
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/getCampaignById",method=RequestMethod.POST)
 	public ResultVO getCampaignById(final Long id) {
 		
@@ -186,7 +186,7 @@ public class CampaignController extends BaseController<Campaign>{
 		return result;
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/getCampaignDetailById",method=RequestMethod.POST)
 	public ResultVO getCampaignDetailById(final Long userId, final Long campaignId, final String lang) {
 		
@@ -199,7 +199,7 @@ public class CampaignController extends BaseController<Campaign>{
 		return result;
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/getCampaignDefaultName",method=RequestMethod.POST)
 	public ResultVO getCampaignDefaultName(final Long campaignId) {
 		
@@ -208,7 +208,7 @@ public class CampaignController extends BaseController<Campaign>{
 		return result;
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/exportCampaignReport",method=RequestMethod.POST)
 	public ResultVO exportCampaignReport(final Long campaignId) {
 		

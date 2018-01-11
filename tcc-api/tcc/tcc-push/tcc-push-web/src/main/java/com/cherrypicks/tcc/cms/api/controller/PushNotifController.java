@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cherrypicks.tcc.cms.api.annotation.MerchantPermissionAuth;
+import com.cherrypicks.tcc.cms.api.annotation.UserMerchanVerifyAnno;
 import com.cherrypicks.tcc.cms.api.util.AssertUtil;
 import com.cherrypicks.tcc.cms.api.vo.ResultVO;
 import com.cherrypicks.tcc.cms.api.vo.SuccessVO;
@@ -38,7 +38,7 @@ public class PushNotifController extends BaseController<PushNotif>{
 	}
 	
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value="/getPushNotifList",method=RequestMethod.POST)
 	public PagingResultVo getPushNotifList(final Long userId,final Long merchantId,final Integer type,final String sortField,final String sortType,final Integer startRow,final Integer maxRows, final String langCode,final String lang){
 		
@@ -68,7 +68,7 @@ public class PushNotifController extends BaseController<PushNotif>{
 		return result;
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value="/createPushNotif",method=RequestMethod.POST)
 	public ResultVO addPushNotif(final Long userId,final Long merchantId,final Integer pageRedirectType,final String langData,final String lang){
 		

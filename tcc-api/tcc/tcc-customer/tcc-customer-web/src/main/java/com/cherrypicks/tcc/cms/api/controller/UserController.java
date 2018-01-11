@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cherrypicks.tcc.cms.api.annotation.IPPermissionAuth;
+import com.cherrypicks.tcc.cms.api.annotation.PrivateRequestVerifyAnno;
 import com.cherrypicks.tcc.cms.api.http.util.SystemRoleRequestUtil;
 import com.cherrypicks.tcc.cms.api.http.util.SystemUserMerchantMapRequestUtil;
 import com.cherrypicks.tcc.cms.api.util.AssertUtil;
@@ -72,7 +72,7 @@ public class UserController extends BaseController<User>{
 		return result;
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/getCustomerById",method=RequestMethod.POST)
 	public ResultVO getCustomerById(final Long customerId){
 		
@@ -81,7 +81,7 @@ public class UserController extends BaseController<User>{
 		return result;
 	}
 	
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/getCampaignTotalUserCount",method=RequestMethod.POST)
 	public ResultVO getCampaignTotalUserCount(final Long campaignId){
 		
@@ -90,7 +90,7 @@ public class UserController extends BaseController<User>{
 		return result;
 	}
 
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/exportUserReport",method=RequestMethod.POST)
 	public ResultVO exportUserReport(final Long merchantId, final String startTime, final String endTime){
 		

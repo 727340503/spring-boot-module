@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cherrypicks.tcc.cms.api.annotation.MerchantPermissionAuth;
+import com.cherrypicks.tcc.cms.api.annotation.UserMerchanVerifyAnno;
 import com.cherrypicks.tcc.cms.api.http.util.AuthorizeRequestUtil;
 import com.cherrypicks.tcc.cms.api.http.util.CampaignRequestUtil;
 import com.cherrypicks.tcc.cms.api.util.AssertUtil;
@@ -31,7 +31,7 @@ public class ViewReportController{
 	@Autowired
 	private ViewReportService viewReportService;
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value = "/viewCollectStampsReport", method = RequestMethod.POST)
 	public PagingResultVo viewCollectStampsReport(final Long userId, final Long merchantId,final Long campaignId,final String startTime,final String endTime,final String sortField,
 												final String sortType,final Integer startRow,final Integer maxRows, final String lang) throws Exception {
@@ -56,7 +56,7 @@ public class ViewReportController{
 		return viewReportService.pagingFindUserStampHistory(userId, merchantId, campaignId, startTime, endTime, sortField, sortType, startRow, maxRows, null, Json.toJson(types),null);
 	}
 
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value = "/viewRedemptionReport", method = RequestMethod.POST)
 	public PagingResultVo viewRedemptionReport(final Long userId, final Long merchantId, final Long campaignId, final String startTime,final String endTime,final String sortField,
 											final String sortType,final Integer startRow,final Integer maxRows,final String lang) throws Exception {
@@ -75,7 +75,7 @@ public class ViewReportController{
 		return viewReportService.pagingFindUserStampHistory(userId, merchantId, campaignId, startTime, endTime, sortField, sortType, startRow, maxRows, null, null, UserStampHistory.UserStampHistoryType.REDEEM.toValue());
 	}
 
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value = "/viewTransferStampsReport", method = RequestMethod.POST)
 	public PagingResultVo viewTransferStampsReport(final Long userId, final Long merchantId, final Long campaignId,final String startTime,final String endTime,final String sortField,final String sortType,final Integer startRow,final Integer maxRows,final String lang) throws Exception {
 
@@ -93,7 +93,7 @@ public class ViewReportController{
 		return viewReportService.pagingFindUserStampHistory(userId, merchantId, campaignId, startTime, endTime, sortField, sortType, startRow, maxRows, true, null, UserStampHistory.UserStampHistoryType.REDEEM.toValue());
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value = "/viewCollectCouponReport", method = RequestMethod.POST)
 	public PagingResultVo viewCollectCouponReport(final Long userId, final Long merchantId,final Long campaignId,final String startTime,final String endTime,final Integer status, final String sortField,final String sortType,final Integer startRow,final Integer maxRows, final String lang) throws Exception {
 
@@ -111,7 +111,7 @@ public class ViewReportController{
 		return viewReportService.pagingFindUserCouponReport(merchantId, campaignId, startTime, endTime, status, sortField, sortType, startRow, maxRows, false);
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value = "/viewRedeemedtCouponReport", method = RequestMethod.POST)
 	public PagingResultVo viewRedeemedtCouponReport(final Long userId, final Long merchantId,final Long campaignId,final String startTime,final String endTime,final String sortField,final String sortType,final Integer startRow,final Integer maxRows, final String lang) throws Exception {
 
@@ -129,7 +129,7 @@ public class ViewReportController{
 		return viewReportService.pagingFindUserCouponReport(merchantId, campaignId, startTime, endTime, UserCoupon.UserCouponStatus.REDEEMED.toValue(), sortField, sortType, startRow, maxRows, true);
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value = "/viewUserReport", method = RequestMethod.POST)
 	public PagingResultVo viewUserReport(final Long userId,final Long merchantId, final String startTime, final String endTime, final String sortField, final String sortType, final Integer startRow, final Integer maxRows, final String lang) throws Exception {
 		
@@ -145,7 +145,7 @@ public class ViewReportController{
 		return viewReportService.pagingFindUserReport(merchantId, startTime, endTime, sortField, sortType, startRow, maxRows);
 	}
 	
-	@MerchantPermissionAuth
+	@UserMerchanVerifyAnno
 	@RequestMapping(value="/viewUserReservationReport",method=RequestMethod.POST)
 	public PagingResultVo viewUserReservationReport(final Long userId, final Long merchantId, final Long campaignId,final String reservationStartTime,final String reservationEndTime, final String pickupStartTime, 
 												final String pickupEndTime, final Integer status, final String sortField,final String sortType,final Integer startRow,final Integer maxRows, final String lang){
