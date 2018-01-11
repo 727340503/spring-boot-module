@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cherrypicks.tcc.cms.api.annotation.IPPermissionAuth;
+import com.cherrypicks.tcc.cms.api.annotation.PrivateRequestVerifyAnno;
 import com.cherrypicks.tcc.cms.api.util.AssertUtil;
 import com.cherrypicks.tcc.cms.api.vo.ResultVO;
 import com.cherrypicks.tcc.cms.api.vo.SuccessVO;
@@ -115,7 +115,7 @@ public class SystemUserController extends BaseController<SystemUser>{
 		
 	}
 
-	@IPPermissionAuth
+	@PrivateRequestVerifyAnno
 	@RequestMapping(value="/private/getSystemUserById",method=RequestMethod.POST)
 	public ResultVO getSystemUserById(final Long id) {
 		
