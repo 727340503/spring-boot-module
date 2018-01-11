@@ -13,7 +13,7 @@ public final class CmsConstants {
 	public static final String MERCHANT_DEFAULT_LANG_CODE_URL = "http://127.0.0.1:8080/tcc_cms/private/getMerchantDefaultLangCode";
 	public static final String FIND_MERCHANT_CONFIG_BY_MERCHANT_ID = "http://127.0.0.1:8080/tcc_cms/private/getMerchantConfigByMerchantId";
 	public static final String UPDATE_HOME_PAGE_CACHE_BY_REF = "http://127.0.0.1:8080/tcc_cms/private/updateMerchantHomePageCashByRefId";
-	public static final String USER_BY_CUSTOMER_ID = "http://127.0.0.1:8080/tcc_cms/private/getUserByUserId";
+	public static final String USER_BY_CUSTOMER_ID = "http://127.0.0.1:8080/tcc_cms/private/getCustomerById";
 	public static final String CAMPAIGN_BY_ID = "http://127.0.0.1:8080/tcc_cms/private/getCampaignById";
 	public static final String MERCHANT_UPDATE_FOR_VERSION = "http://127.0.0.1:8080/tcc_cms/private/updateMerchantForVersion";
 	public static final String USER_RESERVATION_PUSH_NOTIF = "http://127.0.0.1:8080/tcc_cms/private/getUserResertionPushNotif";
@@ -24,7 +24,7 @@ public final class CmsConstants {
 	public static final String MERCHANT_DEFAULT_NAME_URL = "http://127.0.0.1:8080/tcc_cms/private/getMerchantDefaultName";
 	public static final String CAMPAIGN_DEFAULT_NAME = "http://127.0.0.1:8080/tcc_cms/private/getCampaignDefaultName";
 	
-	public static final String EXPORT_USER_REPORT = "http://127.0.0.1:8080/tcc_cms/private/exportUserReports";
+	public static final String EXPORT_USER_REPORT = "http://127.0.0.1:8080/tcc_cms/private/exportUserReport";
 	public static final String EXPORT_USER_STAMP_HISTORY_REPORT = "http://127.0.0.1:8080/tcc_cms/private/exportUserStampHistoryReport";
 	public static final String EXPORT_USER_RESERVATION_REPORT = "http://127.0.0.1:8080/tcc_cms/private/exportUserReservationReport";
 	public static final String EXPORT_USER_COUPON_REPORT = "http://127.0.0.1:8080/tcc_cms/private/exportUserCouponReport";

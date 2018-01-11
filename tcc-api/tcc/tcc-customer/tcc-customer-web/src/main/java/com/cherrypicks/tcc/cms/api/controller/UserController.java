@@ -23,6 +23,7 @@ import com.cherrypicks.tcc.model.SystemRole;
 import com.cherrypicks.tcc.model.User;
 import com.cherrypicks.tcc.util.CmsCodeStatus;
 import com.cherrypicks.tcc.util.I18nUtil;
+import com.cherrypicks.tcc.util.Json;
 
 @RestController
 public class UserController extends BaseController<User>{
@@ -72,6 +73,15 @@ public class UserController extends BaseController<User>{
 	}
 	
 	@IPPermissionAuth
+	@RequestMapping(value="/private/getCustomerById",method=RequestMethod.POST)
+	public ResultVO getCustomerById(final Long customerId){
+		
+		ResultVO result = new ResultVO();
+		result.setResult(userService.findById(customerId));
+		return result;
+	}
+	
+	@IPPermissionAuth
 	@RequestMapping(value="/private/getCampaignTotalUserCount",method=RequestMethod.POST)
 	public ResultVO getCampaignTotalUserCount(final Long campaignId){
 		
@@ -87,7 +97,7 @@ public class UserController extends BaseController<User>{
 		List<UserReportDTO> userReports = userService.findUserReport(merchantId, startTime, endTime);
 		
 		ResultVO result = new ResultVO();
-		result.setResult(userReports);
+		result.setResult(Json.toJson(userReports));
 		return result;
 	}
 	

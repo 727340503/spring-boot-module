@@ -150,6 +150,14 @@ public class MerchantConfigController extends BaseController<MerchantConfig>{
 		return new SuccessVO();
 	}
 	
+	@RequestMapping(value="/private/getMerchantConfigByMerchantId",method=RequestMethod.POST)
+	public ResultVO getMerchantConfigByMerchantId(final Long merchantId){
+	
+		ResultVO result = new ResultVO();
+		result.setResult(merchantConfigService.findByMerchantId(merchantId));
+		return result;
+	}
+	
 	private void checkDeveloper(final String userName, final String password) {
 		
 		AssertUtil.notBlank(userName, "User name "+I18nUtil.getMessage(CmsCodeStatus.ILLEGAL_ARGUMENT, null, lang));

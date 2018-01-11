@@ -211,17 +211,18 @@ public class ReportController{
 	
 	private String getReportFieName(final Long merchantId, final Long campaignId, final String startTime, final String endTime,final String reportFileName) {
 		final String merchantDefaultName = MerchantRequestUtil.findMerchantDefaultName(merchantId);
-		final String campaignFefaultName = CampaignRequestUtil.findCampaignDefaultName(campaignId);
 		
 		String fileName = "";
 		
 		if(reportFileName.equals(Constants.CAMPAIGN_REPORT)){
+			final String campaignFefaultName = CampaignRequestUtil.findCampaignDefaultName(campaignId);
 			fileName = String.format(reportFileName, campaignFefaultName,merchantDefaultName);
 		}else if(reportFileName.equals(Constants.USER_REPORT)){
 			final String formatStartTime = startTime.replaceAll("-","");
 			final String formatEndTime = endTime.replaceAll("-","");
 			fileName = String.format(reportFileName, merchantDefaultName,formatStartTime,formatEndTime);
 		}else{
+			final String campaignFefaultName = CampaignRequestUtil.findCampaignDefaultName(campaignId);
 			final String formatStartTime = startTime.replaceAll("-","");
 			final String formatEndTime = endTime.replaceAll("-","");
 			fileName = String.format(reportFileName, campaignFefaultName,formatStartTime,formatEndTime);

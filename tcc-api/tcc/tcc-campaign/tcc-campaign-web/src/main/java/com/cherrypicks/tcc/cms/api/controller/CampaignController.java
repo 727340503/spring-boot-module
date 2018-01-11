@@ -203,8 +203,6 @@ public class CampaignController extends BaseController<Campaign>{
 	@RequestMapping(value="/private/getCampaignDefaultName",method=RequestMethod.POST)
 	public ResultVO getCampaignDefaultName(final Long campaignId) {
 		
-		AssertUtil.notNull(campaignId, "Campaign id "+I18nUtil.getMessage(CmsCodeStatus.ILLEGAL_ARGUMENT, null, lang));
-		
 		ResultVO result = new ResultVO();
 		result.setResult(campaignLangMapService.findCampaignDefaultLangMap(campaignId).getName());
 		return result;
@@ -213,8 +211,6 @@ public class CampaignController extends BaseController<Campaign>{
 	@IPPermissionAuth
 	@RequestMapping(value="/private/exportCampaignReport",method=RequestMethod.POST)
 	public ResultVO exportCampaignReport(final Long campaignId) {
-		
-		AssertUtil.notNull(campaignId, "Campaign id "+I18nUtil.getMessage(CmsCodeStatus.ILLEGAL_ARGUMENT, null, lang));
 		
 		ResultVO result = new ResultVO();
 		result.setResult(campaignService.getCampaignReport(campaignId));
