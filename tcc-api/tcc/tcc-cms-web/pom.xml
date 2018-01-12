@@ -121,6 +121,25 @@
           	<activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+            <build>
+            		<plugins>
+            			<plugin>
+            				<groupId>org.codehaus.mojo</groupId>  
+					    <artifactId>exec-maven-plugin</artifactId>  
+            				<executions>  
+					      	<execution>  
+					       		<phase>test</phase>  
+					       		<goals>  
+					        			<goal>java</goal>  
+					       		</goals>  
+					       		<configuration>  
+					        			<mainClass>com.cherrypicks.tcc.cms.api.GentratorProjectVersion</mainClass>
+					       		</configuration>  
+					      	</execution>  
+					     </executions> 
+            			</plugin>
+            		</plugins>
+            </build>
         </profile>
 
         <profile>
