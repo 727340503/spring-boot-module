@@ -51,9 +51,11 @@ public class GentratorProjectVersion {
 			if(jsonFile.exists()) {
 				jsonFile.delete();
 			}
+			jsonFile.createNewFile();
 			
 			FileOutputStream fos = new FileOutputStream(jsonFile);
 			fos.write(Json.toJson(moduleJson).getBytes());
+			fos.flush();
 			fos.close();
 		}
 	}
